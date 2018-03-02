@@ -34,10 +34,7 @@ extension CustomAnimator: UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
         let duration = transitionDuration(using: transitionContext)
         
-    
-        
         if presenting {
-            
             toViewStartFrame = CGRect(x: 0, y: containerView.bounds.height, width: containerView.bounds.width, height: containerView.bounds.height)
             toView.frame = toViewStartFrame
             containerView.addSubview(toView)
@@ -55,15 +52,20 @@ extension CustomAnimator: UIViewControllerAnimatedTransitioning {
                 fromView.frame = fromViewFinalFrame
             }
         }) { (_) in
-            //let success = !transitionContext.transitionWasCancelled
-//            if (!self.isPresented && !success) || (self.isPresented && success){
+            let success = !transitionContext.transitionWasCancelled
+            if transitionContext.transitionWasCancelled {
+                transitionContext.completeTransition(false)
+            } else {
+                transitionContext.completeTransition(true)
+            }
+//            if (self.presenting && !success) || (!self.presenting && success){
 //                toVC.view.removeFromSuperview()
 //            }
-            if self.presenting {
-                fromView.removeFromSuperview()
-            }
-            self.presenting = !self.presenting
-            transitionContext.completeTransition(true)
+//            if self.presenting && success {
+//                fromView.removeFromSuperview()
+//            }
+            
+            //self.presenting = !self.presenting
         }
     }
 }

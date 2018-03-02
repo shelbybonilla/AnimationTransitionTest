@@ -13,16 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var presentButton: UIButton!
     
     var transAnimator = CustomAnimator()
+    var interactiveAnimator = InteractiveAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.green
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func presentAction(_ sender: Any) {
         let vc = BViewController()
         vc.transitioningDelegate = self
+        vc.interactor = interactiveAnimator
         self.present(vc, animated: true, completion: nil)
     }
 
@@ -40,7 +41,6 @@ extension ViewController: UIViewControllerInteractiveTransitioning {
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = CustomAnimator()
-        animator.interactionController = InteractiveAnimator(viewController: dismissed)
         animator.presenting = false
         return animator
     }
@@ -51,8 +51,12 @@ extension ViewController: UIViewControllerTransitioningDelegate {
         return animator
     }
     
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactiveAnimator
+    }
+    
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return InteractiveAnimator(viewController: self)
+        return interactiveAnimator
     }
 }
 
