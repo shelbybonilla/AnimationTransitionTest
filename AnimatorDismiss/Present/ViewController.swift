@@ -15,35 +15,33 @@ class ViewController: UIViewController {
     var testPropertyAnimator: UIViewPropertyAnimator!
     
     var transAnimator = CustomAnimator()
-    var interactiveAnimator = InteractiveAnimator()
+    var interactiveAnimator: InteractiveAnimator?
     
     var rectangel: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rectangel = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        rectangel.backgroundColor = UIColor.blue
-        //
-        view.addSubview(rectangel)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(rectTapped))
-        rectangel.addGestureRecognizer(tap)
-        
-        testPropertyAnimator = UIViewPropertyAnimator(duration: 5, curve: .easeInOut, animations: {
-            self.rectangel.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
-        })
+//        rectangel = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        rectangel.backgroundColor = UIColor.blue
+//        //
+//        view.addSubview(rectangel)
+//        
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(rectTapped))
+//        rectangel.addGestureRecognizer(tap)
+//        
+//        testPropertyAnimator = UIViewPropertyAnimator(duration: 5, curve: .easeInOut, animations: {
+//            self.rectangel.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
+//        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        testPropertyAnimator.startAnimation()
     }
 
     @IBAction func presentAction(_ sender: Any) {
         let vc = BViewController()
         vc.transitioningDelegate = self
-        vc.interactor = interactiveAnimator
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -63,24 +61,27 @@ extension ViewController: UIViewControllerInteractiveTransitioning {
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        interactiveAnimator = InteractiveAnimator(attachTo: presented)
+        let animator = CustomAnimator()
+        animator.presenting = true
+        return animator
+    }
+    
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = CustomAnimator()
         animator.presenting = false
         return animator
     }
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = CustomAnimator()
-        animator.presenting = true
-        return animator
-    }
+//    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        guard let ia = interactiveAnimator else { return nil }
+//        return ia.transitionInProgress ? ia : nil
+//    }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveAnimator
-    }
-    
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveAnimator
+        guard let ia = interactiveAnimator else { return nil }
+        return ia.transitionInProgress ? ia : nil
     }
 }
 
