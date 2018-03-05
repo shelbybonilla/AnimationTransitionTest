@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CA6B4582049423A008E9F57 /* CViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6B4572049423A008E9F57 /* CViewController.swift */; };
 		4CC01F922047AE0B000ED5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC01F912047AE0B000ED5A6 /* AppDelegate.swift */; };
 		4CC01F942047AE0B000ED5A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC01F932047AE0B000ED5A6 /* ViewController.swift */; };
 		4CC01F972047AE0B000ED5A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC01F952047AE0B000ED5A6 /* Main.storyboard */; };
@@ -15,9 +16,12 @@
 		4CC01FA52047CD8E000ED5A6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC01FA42047CD8E000ED5A6 /* Animator.swift */; };
 		4CC01FA72047D903000ED5A6 /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC01FA62047D903000ED5A6 /* BViewController.swift */; };
 		4CC01FA92047EE23000ED5A6 /* InteractiveAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC01FA82047EE23000ED5A6 /* InteractiveAnimator.swift */; };
+		4CDFB1D720494380008CF83F /* DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDFB1D620494380008CF83F /* DViewController.swift */; };
+		4CF88236204CD85D00E04824 /* NaviAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF88235204CD85D00E04824 /* NaviAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CA6B4572049423A008E9F57 /* CViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CViewController.swift; sourceTree = "<group>"; };
 		4CC01F8E2047AE0B000ED5A6 /* AnimatorDismiss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatorDismiss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC01F912047AE0B000ED5A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC01F932047AE0B000ED5A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		4CC01FA42047CD8E000ED5A6 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		4CC01FA62047D903000ED5A6 /* BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
 		4CC01FA82047EE23000ED5A6 /* InteractiveAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveAnimator.swift; sourceTree = "<group>"; };
+		4CDFB1D620494380008CF83F /* DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DViewController.swift; sourceTree = "<group>"; };
+		4CF88235204CD85D00E04824 /* NaviAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CA6B4562049420B008E9F57 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4CA6B4572049423A008E9F57 /* CViewController.swift */,
+				4CDFB1D620494380008CF83F /* DViewController.swift */,
+				4CF88235204CD85D00E04824 /* NaviAnimator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		4CA6B45A204942DE008E9F57 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				4CC01FA32047C591000ED5A6 /* Animator */,
+				4CC01F912047AE0B000ED5A6 /* AppDelegate.swift */,
+				4CC01F932047AE0B000ED5A6 /* ViewController.swift */,
+				4CC01FA62047D903000ED5A6 /* BViewController.swift */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
 		4CC01F852047AE0B000ED5A6 = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +87,8 @@
 		4CC01F902047AE0B000ED5A6 /* AnimatorDismiss */ = {
 			isa = PBXGroup;
 			children = (
-				4CC01FA32047C591000ED5A6 /* Animator */,
-				4CC01F912047AE0B000ED5A6 /* AppDelegate.swift */,
-				4CC01F932047AE0B000ED5A6 /* ViewController.swift */,
-				4CC01FA62047D903000ED5A6 /* BViewController.swift */,
+				4CA6B45A204942DE008E9F57 /* Present */,
+				4CA6B4562049420B008E9F57 /* Navigation */,
 				4CC01F952047AE0B000ED5A6 /* Main.storyboard */,
 				4CC01F982047AE0B000ED5A6 /* Assets.xcassets */,
 				4CC01F9A2047AE0B000ED5A6 /* LaunchScreen.storyboard */,
@@ -157,6 +182,9 @@
 				4CC01FA72047D903000ED5A6 /* BViewController.swift in Sources */,
 				4CC01F942047AE0B000ED5A6 /* ViewController.swift in Sources */,
 				4CC01FA92047EE23000ED5A6 /* InteractiveAnimator.swift in Sources */,
+				4CDFB1D720494380008CF83F /* DViewController.swift in Sources */,
+				4CA6B4582049423A008E9F57 /* CViewController.swift in Sources */,
+				4CF88236204CD85D00E04824 /* NaviAnimator.swift in Sources */,
 				4CC01F922047AE0B000ED5A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
