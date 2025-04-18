@@ -1,0 +1,18 @@
+Background {
+    background-color: #000000;
+}
+
+# LargeText {
+    font-size:5em;
+    font-color: #FC43FF;
+    
+}
+# LargeText:hover {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+
+.LightBlue {
+    font-color: #7FB6FF;
+}
+
